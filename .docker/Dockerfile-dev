@@ -1,0 +1,25 @@
+FROM nvcr.io/nvidia/cuda:12.0.0-runtime-ubuntu22.04
+
+# docker build . -t sd_app -f .docker/Dockerfile-prod
+# docker run -it --gpus all sd_app
+
+# Install python 3.10 on the CUDA docker image.
+ENV LANG C.UTF-8
+
+RUN apt-get update
+RUN apt-get install -y --no-install-recommends python3.10
+RUN apt-get install -y --no-install-recommends python3-pip
+RUN apt-get install -y --no-install-recommends git
+RUN rm -rf /var/lib/apt/lists/*
+RUN apt-get clean
+
+RUN mkdir wd
+WORKDIR /wd
+
+COPY requirements.txt .
+RUN pip3 install -r requirements.txt
+
+ENV LOGGING_LEVEL=INFO
+
+COPY . .
+CMD python3 src/main.py

@@ -1,0 +1,6 @@
+env/
+secrets/
+*/*/__pycache__/
+resources/
+steps/
+logs/

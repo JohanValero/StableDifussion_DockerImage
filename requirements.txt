@@ -1,0 +1,9 @@
+google-cloud-pubsub==2.13.11
+pillow==9.4.0
+transformers==4.25.1
+omegaconf==2.3.0
+diffusers==0.11.1
+--find-links https://download.pytorch.org/whl/torch_stable.html
+torch==1.13.1+cu117
+--find-links https://download.pytorch.org/whl/torch_stable.html
+torchvision==0.14.1+cu117

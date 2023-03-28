@@ -1,0 +1,26 @@
+services:
+  app:
+    entrypoint:
+    - sleep
+    - infinity
+    #image: nvcr.io/nvidia/cuda:12.0.0-runtime-ubuntu20.04
+    build:
+      context: .
+      dockerfile: .docker/Dockerfile-dev
+    environment:
+      GOOGLE_CLOUD_PROJECT_ID: 'YOUR_PROJECT_ID'
+      GOOGLE_APPLICATION_CREDENTIALS: '/com.docker.devenvironments.code/secrets/google-secret.json'
+      LOGGING_LEVEL: 'INFO'
+      FORCE_CPU: 0
+    init: true
+    volumes:
+    - type: bind
+      source: /var/run/docker.sock
+      target: /var/run/docker.sock
+    deploy:
+      resources:
+        reservations:
+          devices:
+          - driver: nvidia
+            capabilities: [gpu]
+

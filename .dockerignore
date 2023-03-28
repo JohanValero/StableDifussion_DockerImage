@@ -1,0 +1,13 @@
+env/
+logs/
+.docker/
+resources/model_0.ckpt
+resources/model_1.ckpt
+resources/model_2.ckpt
+resources/model_3.ckpt
+steps/
+.dockerignore
+.gitignore
+compose-dev.yaml
+LICENSE.md
+README.md
